@@ -10,7 +10,7 @@ private const val WIDTH = 400
 private const val HEIGHT = 600
 
 @Service
-class Service {
+class BarrenLandService {
 
     private val X_TILES = WIDTH / TILE_SIZE
     private val Y_TILES = HEIGHT / TILE_SIZE
@@ -175,6 +175,7 @@ class Service {
         private fun checkForUnvisitedAreasAndCountFertileLand(land: MutableList<Int>, xVal: Int, yVal: Int): MutableList<Int> {
             for (y in yVal until Y_TILES) {
                 for (x in xVal until X_TILES) {
+                    print("-")
                     val tile = grid[x][y]
                     if (!tile.isVisited) {
                         val totalFertileArea = floodFill(grid, x, y)
@@ -182,6 +183,7 @@ class Service {
                         checkForUnvisitedAreasAndCountFertileLand(land, x, y)
                     }
                 }
+                println("")
             }
             return land
 
